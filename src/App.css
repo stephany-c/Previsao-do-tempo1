@@ -1,0 +1,63 @@
+.container {
+  max-width: 1000px;
+  padding: 20px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  color: aliceblue;
+}
+
+/* Alinhamento do input e botão */
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+/* Input */
+input {
+  padding: 12px;
+  border-radius: 25px 0 0 25px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  width: 60%;
+  max-width: 300px;
+  outline: none;
+  font-size: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Efeito no input quando clicado */
+input:focus {
+  border-color: rgb(103, 88, 88);
+  box-shadow: 0px 0px 8px rgba(103, 88, 88, 0.5);
+}
+
+/* Botão */
+button {
+  background-color: rgb(103, 88, 88);
+  border: 0;
+  padding: 12px 16px;
+  border-radius: 0 25px 25px 0;
+  cursor: pointer;
+  color: azure;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+/* Hover do botão */
+button:hover {
+  background-color: rgba(34, 28, 19, 0.97);
+  transform: scale(1.05);
+}
+
+/* Animação ao clicar */
+button:active {
+  transform: scale(0.95);
+}
+

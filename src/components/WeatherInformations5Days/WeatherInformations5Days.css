@@ -1,0 +1,58 @@
+.weather-container {
+    background-color: rgba(255, 255, 255, 0.411);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.weather-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+/* Faz os itens ficarem alinhados corretamente */
+.weather-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap; /* Permite quebra de linha */
+}
+
+/* Definição dos itens */
+.weather-item {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.888);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    height: 220px;
+    width: 150px; /* Garante um tamanho mínimo */
+}
+
+
+/* Telas menores que 768px (tablets e celulares em modo paisagem) */
+@media screen and (max-width: 768px) {
+    .weather-list {
+        justify-content: center;
+    }
+
+    .weather-item {
+        width: 130px; /* Diminui um pouco o tamanho */
+        height: auto;
+        padding: 15px;
+    }
+}
+
+/* Telas menores que 480px (celulares pequenos) */
+@media screen and (max-width: 480px) {
+    .weather-list {
+        flex-direction: column; /* Coloca os itens em coluna */
+        align-items: center;
+    }
+
+    .weather-item {
+        width: 100%; /* Ocupa toda a largura disponível */
+        max-width: 250px; /* Limita para não ficar muito grande */
+    }
+}
