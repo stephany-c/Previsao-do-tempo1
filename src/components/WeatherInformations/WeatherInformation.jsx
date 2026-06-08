@@ -21,7 +21,7 @@ function WeatherInformation({ weather }) {
             <div className='weather-info'>
                 <img
                     alt='icone-tempo'
-                    src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
+                    src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
                 />
                 <p className='temperature'>{Math.round(weather.main.temp)}°C</p>
             </div>
@@ -31,10 +31,30 @@ function WeatherInformation({ weather }) {
             </div>
 
             <div className='details'>
-                <div><p>Sensação térmica: {Math.round(weather.main.feels_like)}°C</p></div>
-                <div><p>Umidade: {weather.main.humidity}%</p></div>
-                <div><p>Pressão: {weather.main.pressure} hPa</p></div>
-
+                <div className='detail-item'>
+                    <span className='detail-label'>Sensação térmica</span>
+                    <span className='detail-value'>{Math.round(weather.main.feels_like)}°C</span>
+                </div>
+                <div className='detail-item'>
+                    <span className='detail-label'>Umidade</span>
+                    <span className='detail-value'>{weather.main.humidity}%</span>
+                </div>
+                <div className='detail-item'>
+                    <span className='detail-label'>Pressão</span>
+                    <span className='detail-value'>{weather.main.pressure} hPa</span>
+                </div>
+                <div className='detail-item'>
+                    <span className='detail-label'>Vento</span>
+                    <span className='detail-value'>{Math.round(weather.wind.speed * 3.6)} km/h</span>
+                </div>
+                <div className='detail-item'>
+                    <span className='detail-label'>Nascer do sol</span>
+                    <span className='detail-value'>{sunriseTime}</span>
+                </div>
+                <div className='detail-item'>
+                    <span className='detail-label'>Pôr do sol</span>
+                    <span className='detail-value'>{sunsetTime}</span>
+                </div>
             </div>
         </div>
     );
