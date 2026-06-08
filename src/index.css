@@ -9,10 +9,15 @@
 }
 
 body {
-
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(to right, #25373c, #084b61);
   color: black;
   line-height: 1.6;
-
+  min-height: 100vh;
+  background-color: #0b2540;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(56, 189, 248, 0.35), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 85% 15%, rgba(14, 165, 233, 0.25), transparent 55%),
+    radial-gradient(ellipse 90% 70% at 10% 90%, rgba(8, 75, 97, 0.55), transparent 60%),
+    linear-gradient(160deg, #0b2540 0%, #0a2e4a 45%, #062032 100%);
+  background-attachment: fixed;
 }
