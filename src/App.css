@@ -1,63 +1,184 @@
 .container {
   max-width: 1000px;
-  padding: 20px;
+  padding: 40px 20px;
   margin: 0 auto;
   text-align: center;
+}
+
+.app-header {
+  margin-bottom: 32px;
 }
 
 h1 {
   font-size: 3rem;
   color: aliceblue;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
-/* Alinhamento do input e botão */
+.subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  margin-top: 8px;
+}
+
+/* Barra de pesquisa unificada (formato pílula) */
 .search-container {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 5px;
-  margin-bottom: 20px;
+  gap: 8px;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto 20px;
+  padding: 6px 6px 6px 18px;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Input */
+.search-container:focus-within {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25), 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.search-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+}
+
+/* Input transparente dentro da pílula */
 input {
-  padding: 12px;
-  border-radius: 25px 0 0 25px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  width: 60%;
-  max-width: 300px;
+  flex: 1;
+  min-width: 0;
+  padding: 12px 6px;
+  border: 0;
+  background: transparent;
   outline: none;
   font-size: 1rem;
-  transition: all 0.3s ease-in-out;
+  color: aliceblue;
 }
 
-/* Efeito no input quando clicado */
-input:focus {
-  border-color: rgb(103, 88, 88);
-  box-shadow: 0px 0px 8px rgba(103, 88, 88, 0.5);
+input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
 }
 
-/* Botão */
+/* Botão integrado */
 button {
-  background-color: rgb(103, 88, 88);
+  background-color: #0ea5e9;
   border: 0;
-  padding: 12px 16px;
-  border-radius: 0 25px 25px 0;
+  padding: 12px 24px;
+  border-radius: 999px;
   cursor: pointer;
   color: azure;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 1rem;
+  flex-shrink: 0;
   transition: all 0.3s ease;
 }
 
 /* Hover do botão */
 button:hover {
-  background-color: rgba(34, 28, 19, 0.97);
-  transform: scale(1.05);
+  background-color: #0284c7;
 }
 
 /* Animação ao clicar */
 button:active {
-  transform: scale(0.95);
+  transform: scale(0.97);
 }
 
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Estado inicial de boas-vindas */
+.welcome-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 48px auto 0;
+  max-width: 480px;
+  padding: 40px 28px;
+  border-radius: 24px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.5s ease;
+}
+
+.welcome-icon {
+  color: #7dd3fc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background-color: rgba(56, 189, 248, 0.15);
+  margin-bottom: 4px;
+}
+
+.welcome-state h2 {
+  color: aliceblue;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.welcome-state p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.suggestion-chip {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: aliceblue;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.suggestion-chip:hover {
+  background-color: rgba(56, 189, 248, 0.3);
+  border-color: #38bdf8;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mensagem de erro */
+.error-message {
+  color: #fecaca;
+  background-color: rgba(220, 38, 38, 0.25);
+  border: 1px solid rgba(248, 113, 113, 0.5);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin: 16px auto;
+  max-width: 400px;
+  font-size: 0.95rem;
+}

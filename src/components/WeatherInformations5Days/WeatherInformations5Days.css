@@ -1,35 +1,63 @@
 .weather-container {
-    background-color: rgba(255, 255, 255, 0.411);
-    border-radius: 10px;
-    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 28px;
     margin: 20px 0;
+    color: aliceblue;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
 .weather-container h3 {
     font-size: 1.5rem;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    font-weight: 600;
 }
 
 /* Faz os itens ficarem alinhados corretamente */
 .weather-list {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap; /* Permite quebra de linha */
+    align-items: stretch;
+    gap: 14px;
+    flex-wrap: wrap;
 }
 
 /* Definição dos itens */
 .weather-item {
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.888);
-    border-radius: 10px;
-    padding: 20px;
-    margin: 10px;
-    height: 220px;
-    width: 150px; /* Garante um tamanho mínimo */
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 18px 14px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
+.weather-item:hover {
+    transform: translateY(-4px);
+    background-color: rgba(255, 255, 255, 0.18);
+}
+
+.weather-item p:first-child {
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.weather-item p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.weather-item img {
+    width: 60px;
+}
 
 /* Telas menores que 768px (tablets e celulares em modo paisagem) */
 @media screen and (max-width: 768px) {
@@ -38,21 +66,15 @@
     }
 
     .weather-item {
-        width: 130px; /* Diminui um pouco o tamanho */
-        height: auto;
-        padding: 15px;
+        width: 130px;
+        padding: 14px;
     }
 }
 
 /* Telas menores que 480px (celulares pequenos) */
 @media screen and (max-width: 480px) {
-    .weather-list {
-        flex-direction: column; /* Coloca os itens em coluna */
-        align-items: center;
-    }
-
     .weather-item {
-        width: 100%; /* Ocupa toda a largura disponível */
-        max-width: 250px; /* Limita para não ficar muito grande */
+        width: calc(50% - 7px);
+        max-width: 160px;
     }
 }

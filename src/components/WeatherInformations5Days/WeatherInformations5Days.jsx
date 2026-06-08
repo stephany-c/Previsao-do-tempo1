@@ -27,7 +27,7 @@ function WeatherInformation5Days({ weather5Days }) {
                         <div className='weather-item' key={forecast.dt}  >
                             <p>{dayOfWeek}, {dayNumber}</p>
                             <img
-                                src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`}
+                                src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
                                 alt={forecast.weather[0].description}
                             />
                             <p>{forecast.weather[0].description}</p>
