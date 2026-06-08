@@ -11,8 +11,8 @@ function App() {
   const [error, setError] = useState('')
   const inputRef = useRef()
 
-  async function searchCity(cityName) {
-    const city = (typeof cityName === 'string' ? cityName : inputRef.current.value).trim()
+  async function searchCity(cityQuery) {
+    const city = (typeof cityQuery === 'string' ? cityQuery : inputRef.current?.value || '').trim()
 
     if (!city) {
       setError('Digite o nome de uma cidade.')
@@ -26,9 +26,10 @@ function App() {
     setLoading(true)
     setError('')
 
-    const key = 'a65b2d96f2def614842300a4d041f408'
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&lang=pt_br&units=metric`
-    const url5Days = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}&lang=pt_br&units=metric`
+    const key = import.meta.env.VITE_OPENWEATHER_API_KEY || 'a65b2d96f2def614842300a4d041f408'
+    const encodedCity = encodeURIComponent(city)
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodedCity}&appid=${key}&lang=pt_br&units=metric`
+    const url5Days = `https://api.openweathermap.org/data/2.5/forecast?q=${encodedCity}&appid=${key}&lang=pt_br&units=metric`
 
     try {
       const [apiInfo, apiInfo5Days] = await Promise.all([
@@ -52,7 +53,7 @@ function App() {
 
   function handleKeyDown(event) {
     if (event.key === 'Enter') {
-      searchCity()
+      searchCity(inputRef.current?.value)
     }
   }
 
@@ -75,8 +76,13 @@ function App() {
           type="text"
           placeholder="Digite o nome da cidade"
           onKeyDown={handleKeyDown}
+          aria-label="Nome da cidade para pesquisar o clima"
         />
-        <button onClick={searchCity} disabled={loading}>
+        <button 
+          onClick={() => searchCity(inputRef.current?.value)} 
+          disabled={loading}
+          aria-label={loading ? 'Buscando previsão do tempo...' : 'Buscar previsão do tempo'}
+        >
           {loading ? 'Buscando...' : 'Buscar'}
         </button>
       </div>
