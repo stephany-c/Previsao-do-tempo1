@@ -11,12 +11,16 @@ function App() {
   const [error, setError] = useState('')
   const inputRef = useRef()
 
-  async function searchCity() {
-    const city = inputRef.current.value.trim()
+  async function searchCity(cityName) {
+    const city = (typeof cityName === 'string' ? cityName : inputRef.current.value).trim()
 
     if (!city) {
       setError('Digite o nome de uma cidade.')
       return
+    }
+
+    if (inputRef.current) {
+      inputRef.current.value = city
     }
 
     setLoading(true)
@@ -72,6 +76,34 @@ function App() {
       </div>
 
       {error && <p className="error-message">{error}</p>}
+
+      {!weather && !error && !loading && (
+        <div className="welcome-state">
+          <div className="welcome-icon" aria-hidden="true">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 2v2" />
+              <path d="m4.93 4.93 1.41 1.41" />
+              <path d="M20 12h2" />
+              <path d="m19.07 4.93-1.41 1.41" />
+              <path d="M15.947 12.65a4 4 0 0 0-5.925-4.128" />
+              <path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z" />
+            </svg>
+          </div>
+          <h2>Qual cidade você quer consultar?</h2>
+          <p>Busque por qualquer cidade do mundo ou comece por uma das sugestões abaixo.</p>
+          <div className="suggestions">
+            {['São Paulo', 'Rio de Janeiro', 'Lisboa', 'Tóquio', 'Nova York', 'Paris'].map((city) => (
+              <button
+                key={city}
+                className="suggestion-chip"
+                onClick={() => searchCity(city)}
+              >
+                {city}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       {weather && <WeatherInformation weather={weather} />}
       {weather5Days && <WeatherInformation5Days weather5Days={weather5Days} />}
