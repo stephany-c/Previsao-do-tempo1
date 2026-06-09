@@ -182,3 +182,81 @@ button:disabled {
   max-width: 400px;
   font-size: 0.95rem;
 }
+
+/* Logotipo */
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.app-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.6));
+  animation: floatLogo 6s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Footer (Rodapé) */
+.app-footer {
+  margin-top: 80px;
+  padding: 24px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.app-footer p {
+  margin: 0;
+}
+
+.app-footer strong {
+  color: aliceblue;
+}
+
+.app-footer a {
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.app-footer a:hover {
+  color: #38bdf8;
+}
+
+.app-footer .footer-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.app-footer .divider {
+  color: rgba(255, 255, 255, 0.15);
+}
+
+/* Responsividade do Footer */
+@media screen and (max-width: 600px) {
+  .app-footer {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}

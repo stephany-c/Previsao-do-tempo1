@@ -60,8 +60,8 @@ function App() {
   return (
     <div className="container">
       <header className="app-header">
-        <h1>Previsão do Tempo</h1>
-        <p className="subtitle">Veja o clima atual e os próximos 5 dias de qualquer cidade</p>
+        <h1>SkyCast</h1>
+        <p className="subtitle">Veja o clima atual e os próximos 5 dias de qualquer cidade.</p>
       </header>
 
       <div className="search-container">
@@ -78,8 +78,8 @@ function App() {
           onKeyDown={handleKeyDown}
           aria-label="Nome da cidade para pesquisar o clima"
         />
-        <button 
-          onClick={() => searchCity(inputRef.current?.value)} 
+        <button
+          onClick={() => searchCity(inputRef.current?.value)}
           disabled={loading}
           aria-label={loading ? 'Buscando previsão do tempo...' : 'Buscar previsão do tempo'}
         >
@@ -119,6 +119,8 @@ function App() {
 
       {weather && <WeatherInformation weather={weather} />}
       {weather5Days && <WeatherInformation5Days weather5Days={weather5Days} />}
+
+
     </div>
   )
 }
